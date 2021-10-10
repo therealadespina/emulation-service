@@ -21,7 +21,7 @@ public class EmulationController {
     }
 
     private static final String STRUCTURE = "Structure.xml";
-    private static final String P_ACT_NUMBER = "number";
+    private static final String NUMBER = "number";
 
     @PostMapping("/create")
     @ResponseBody
@@ -61,7 +61,7 @@ public class EmulationController {
         String key = attrs.getAttrStr().getKey();
         String value = attrs.getAttrStr().getValue();
 
-        if (!key.equals(P_ACT_NUMBER)) {
+        if (!key.equals(NUMBER)) {
             throw new ServerWebInputException(
                     "Key: " + key + " does not match the pattern 'number' " + ResponseEntity.badRequest());
         }
@@ -89,7 +89,7 @@ public class EmulationController {
 
         AttrStr attrStr2 = new AttrStr();
         attrStr2.setKey("TemplateAttrs");
-        attrStr2.setValue(P_ACT_NUMBER + "(STRING)="
+        attrStr2.setValue(NUMBER + "(STRING)="
                 + request.getFolders().get(0).getAttrs().get(0).getAttrStr().getValue() + "|*");
 
         Attrs attrs = new Attrs();
